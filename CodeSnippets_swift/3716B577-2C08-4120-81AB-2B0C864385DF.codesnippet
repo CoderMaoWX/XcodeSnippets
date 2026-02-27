@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>lazycoll</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>
+
+let kListHeaderKey = UICollectionView.elementKindSectionHeader
+let kListFooterKey = UICollectionView.elementKindSectionFooter
+
+private lazy var collectionView: UICollectionView = {
+    let layout = UICollectionViewFlowLayout()
+    layout.scrollDirection = .horizontal
+    layout.minimumLineSpacing = &lt;#8#&gt;
+    layout.minimumInteritemSpacing = &lt;#8#&gt;
+    layout.sectionInset = UIEdgeInsets.zero
+    layout.itemSize = CGSize(width: &lt;#200#&gt;, height: &lt;#200#&gt;)
+    layout.itemSize = &lt;#UICollectionViewFlowLayout.automaticSize#&gt;
+    layout.estimatedItemSize = CGSize(width: &lt;#200#&gt;, height: &lt;#200#&gt;)
+    
+    let colletionV = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+    colletionV.backgroundColor = &lt;#.white#&gt;
+    colletionV.showsHorizontalScrollIndicator = false
+    colletionV.showsVerticalScrollIndicator = false
+    colletionV.contentInset = .init(top: 0, left: &lt;#12#&gt;, bottom: 0, right: &lt;#12#&gt;)
+    colletionV.dataSource = self
+    colletionV.delegate = self
+    colletionV.register(cellWithClass: BaseCollectionViewCell.self)
+    colletionV.register(supplementaryViewOfKind: kListHeaderKey, withClass: BaseCollectionReusableView.self)
+    colletionV.register(supplementaryViewOfKind: kListFooterKey, withClass: BaseCollectionReusableView.self)
+    colletionV.register(cellWithClass: &lt;#BaseCollectionViewCell#&gt;.self)
+    return colletionV
+}()
+
+override func setupUI() {
+    &lt;#self.view#&gt;.addSubview(collectionView)
+
+    collectionView.snp.makeConstraints {
+        $0.top.equalToSuperview().offset(&lt;#12#&gt;)
+        $0.leading.equalToSuperview().offset(&lt;#12#&gt;)
+        $0.trailing.equalToSuperview().offset(-&lt;#12#&gt;)
+        $0.bottom.equalToSuperview().offset(-&lt;#12#&gt;)
+    }
+}
+
+var dataArr: [&lt;#TSTitleValueModel#&gt;] = []
+
+extension &lt;#TSSomeOneVC#&gt;: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func numberOfSections(in collectionView: UICollectionView) -&gt; Int {
+        return &lt;#1#&gt;
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -&gt; Int {
+        return &lt;#dataArr.count#&gt;
+    }
+    
+    ///每组显示的头部
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -&gt; UICollectionReusableView {
+        if kind == kListHeaderKey {
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withClass: BaseCollectionReusableView.self, for: indexPath)
+            
+            return header
+            
+        } else if kind == kListFooterKey {
+            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withClass: BaseCollectionReusableView.self, for: indexPath)
+            return footer
+        }
+        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withClass: BaseCollectionReusableView.self, for: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -&gt; UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withClass: &lt;#BaseCollectionViewCell#&gt;.self, for: indexPath)
+        let model = &lt;#dataArr#&gt;[indexPath.item]
+        cell.&lt;#dataModel#&gt; = model
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let model = &lt;#dataArr#&gt;[indexPath.item]
+        //do some things
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>3716B577-2C08-4120-81AB-2B0C864385DF</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>懒加载UICollectionView</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

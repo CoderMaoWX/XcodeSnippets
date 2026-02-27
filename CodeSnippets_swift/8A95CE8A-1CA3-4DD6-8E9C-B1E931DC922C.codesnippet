@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>lazytab</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>private lazy var tableView: UITableView = {
+    let tableView = UITableView(frame: CGRect.zero, style: &lt;#.plain#&gt;)
+    tableView.separatorStyle = .none
+    tableView.delegate = self
+    tableView.dataSource = self
+    tableView.backgroundColor = .white
+    tableView.rowHeight = &lt;#44#&gt;
+    tableView.register(cellWithClass: UITableViewCell.self)
+    tableView.register(cellWithClass: BaseTableViewCell.self)
+    tableView.register(cellWithClass: &lt;#TSPointsMallTaskInfoCell#&gt;.self)
+    tableView.register(headerFooterViewClassWith: &lt;#TSOrderDetailGoodsHeader#&gt;.self)
+    return tableView
+}()
+
+override func setupUI() {
+    &lt;#self.view#&gt;.addSubview(tableView)
+    
+    tableView.snp.makeConstraints {
+        $0.top.equalToSuperview().offset(&lt;#12#&gt;)
+        $0.leading.equalToSuperview().offset(&lt;#12#&gt;)
+        $0.trailing.equalToSuperview().offset(-&lt;#12#&gt;)
+        $0.bottom.equalToSuperview().offset(-&lt;#12#&gt;)
+    }
+}
+
+var dataArr: [&lt;#TSTitleValueModel#&gt;] = []
+
+
+extension &lt;#TSSomeOneVC#&gt;: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -&gt; Int {
+        return &lt;#1#&gt;
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
+        return &lt;#dataArr#&gt;.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -&gt; CGFloat {
+        if indexPath.section == 0 {
+            return &lt;#kScreenHeight - 60#&gt;
+        }
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withClass: &lt;#UITableViewCell#&gt;.self, for: indexPath)
+        //cell.contentView.backgroundColor = .random
+        cell.&lt;#dataModel#&gt; = &lt;#dataArr#&gt;[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = &lt;#dataArr#&gt;[indexPath.row]
+        //do some thing
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>8A95CE8A-1CA3-4DD6-8E9C-B1E931DC922C</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>懒加载UITableView</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

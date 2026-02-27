@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>lazybtn</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>///&lt;#按钮#&gt;
+private lazy var &lt;#tap#&gt;Btn: UIButton = {
+    let btn = UIButton()
+    btn.backgroundColor = .white
+    btn.setTitleColor(&lt;#DefaultTextColor#&gt;, for: .normal)
+    btn.titleLabel?.font = .oraimo_Medium(size: &lt;#T##CGFloat#&gt;)
+    btn.titleForNormal = R.string.localizable.&lt;#app专享#&gt;()
+    btn.setImage(R.image.&lt;#图片名#&gt;(), for: .normal)
+    btn.imagePosition(style: &lt;#T##TSButtonImagePosition#&gt;, spacing: &lt;#T##CGFloat#&gt;)
+    btn.addTarget(self, action: #selector(&lt;#buttonAction#&gt;), for: .touchUpInside)
+    btn.contentEdgeInsets = UIEdgeInsets(top: &lt;#T##CGFloat#&gt;, left: &lt;#T##CGFloat#&gt;, bottom: &lt;#T##CGFloat#&gt;, right: &lt;#T##CGFloat#&gt;)
+    return btn
+}()
+
+///点击  &lt;#某某#&gt;   按钮事件
+@objc private func &lt;#buttonAction#&gt;() {
+    
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>0C6B5E30-A2E1-4D99-9BE2-864F95E4B1D3</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>懒加载UIButton</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

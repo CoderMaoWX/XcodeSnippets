@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>lazylab</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>private lazy var &lt;#title#&gt;Label: UILabel = {
+    let label = UILabel()
+    label.backgroundColor = &lt;#.clear#&gt;
+    label.textColor = &lt;#blackTextColor00#&gt;
+    label.font = .oraimo_Medium(size: &lt;#T##CGFloat#&gt;)
+    label.text = R.string.localizable.&lt;#多语言Key#&gt;()
+    label.numberOfLines = &lt;#0#&gt;
+    label.lineBreakMode = &lt;#.byTruncatingTail#&gt;
+    label.layerCornerRadius = &lt;#6#&gt;
+    label.layerBorderColor = &lt;#DefaultImageBgColor#&gt;
+    label.layerBorderWidth = &lt;#1#&gt;
+    return label
+}()</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>E9705DAC-97C9-43DE-BFEF-D18865D39998</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>懒加载 UILabel</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>addref</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//设置上下拉刷新控件
+func addListRefreshKit() {
+    self.&lt;#tableView#&gt;.addRefreshKit { [weak self] in
+        guard let self = self else { return }
+        self.&lt;#requestListData#&gt;(firstPage: true)
+        
+    } footerClosure: { [weak self] in
+        guard let self = self else { return }
+        self.&lt;#requestListData#&gt;(firstPage: false)
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>F0FB39E0-58C1-492E-B8B6-170577C4DEEB</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>添加上下拉刷新控件</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

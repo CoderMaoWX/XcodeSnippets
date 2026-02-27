@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>addreq</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>///数据源
+var &lt;#dataArr#&gt;: [&lt;#TSPublicProductModel#&gt;] = []
+///页码数
+var dataPage = 0
+
+///请求列表数据
+func requestListData(firstPage: Bool) {
+    dataPage = firstPage ? 1 : (dataPage+1)
+    let param: [String : Any] = [
+        "page" : dataPage,
+        "page_size" : 10
+    ]
+    let api = TSRequestApi(apiPort(.&lt;#user_wishList#&gt;), method: .get, parameters: param)
+    api.parseModelMap = (keyPath: "data.data", modelType: TSPublicProductModel.self)
+    if firstPage, &lt;#tableView#&gt;.mj_header?.state != .refreshing {
+        api.loadingSuperView = view
+    }
+    api.startRequest { [weak self] response in
+        guard let self = self else { return }
+        if response.isSuccess {
+            let modelArray =  (response.parseModel as? [TSPublicProductModel]) ?? []
+            if firstPage {
+                self.&lt;#dataArr#&gt; = modelArray
+            } else {
+                self.&lt;#dataArr#&gt; += modelArray
+            }
+        } else {
+            self.dataPage -= 1
+        }
+        self.&lt;#tableView#&gt;.reloadData(judgeEmptyView: response.responseDict)
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>EFA63874-3E77-4FF9-B06F-CBE35AF21107</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>网络请求示例</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
